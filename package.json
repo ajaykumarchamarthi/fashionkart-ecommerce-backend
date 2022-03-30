@@ -1,5 +1,5 @@
 {
-  "name": "Fashionkart ecommerce-backend",
+  "name": "ecommerce-backend",
   "version": "1.0.0",
   "description": "This Backend for Fashionkart Ecommerce App",
   "main": "server.js",
