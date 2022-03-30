@@ -1,7 +1,7 @@
 {
-  "name": "ecommerce-backend",
+  "name": "Fashionkart ecommerce-backend",
   "version": "1.0.0",
-  "description": "This Backend for Ecommerce App",
+  "description": "This Backend for Fashionkart Ecommerce App",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
