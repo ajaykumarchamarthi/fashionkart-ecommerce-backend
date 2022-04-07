@@ -13,6 +13,16 @@ const app = express();
 // Set Security HTTP headers
 app.use(helmet());
 
+// CORS // Access-Control-Allow-Origin * (all users)
+app.use(
+  cors({
+    origin: "https://fashionkart-ecommerce.netlify.app",
+    credentials: true,
+  })
+);
+
+app.options("*", cors());
+
 // Development logging
 if (process.env.NODE_ENV === "development") {
   // 3rd party middleware
@@ -44,14 +54,6 @@ app.use(
 
 // Body parser, reading data from body into req.body
 app.use(express.json({ limit: "10kb" }));
-
-// CORS
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
 
 // Importing Error Handlers
 const AppError = require("./utils/appError");
