@@ -14,12 +14,31 @@ const app = express();
 app.use(helmet());
 
 // CORS // Access-Control-Allow-Origin * (all users)
-app.use(
-  cors({
-    origin: "https://fashionkart-ecommerce.netlify.app",
-    credentials: true,
-  })
-);
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
+if (process.env.NODE_ENV === "production") {
+  app.use(
+    cors({
+      origin: "https://fashionkart-ecommerce.netlify.app",
+      credentials: true,
+    })
+  );
+} else {
+  app.use(
+    cors({
+      origin: "http://localhost:3000",
+      credentials: true,
+    })
+  );
+}
 
 app.options("*", cors());
 
