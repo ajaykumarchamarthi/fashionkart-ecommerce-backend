@@ -24,21 +24,12 @@ app.use(function (req, res, next) {
   next();
 });
 
-if (process.env.NODE_ENV === "production") {
-  app.use(
-    cors({
-      origin: "https://fashionkart-ecommerce.netlify.app",
-      credentials: true,
-    })
-  );
-} else {
-  app.use(
-    cors({
-      origin: "http://localhost:3000",
-      credentials: true,
-    })
-  );
-}
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
 
 app.options("*", cors());
 
