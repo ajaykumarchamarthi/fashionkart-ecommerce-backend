@@ -26,10 +26,12 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, "Product must have a description"],
   },
-  images: {
-    type: String,
-    required: [true, "Product must have a image"],
-  },
+  images: [
+    {
+      type: String,
+      required: [true, "Product must have a image"],
+    },
+  ],
   gender: {
     type: String,
     required: [true, "Product must have a name"],
