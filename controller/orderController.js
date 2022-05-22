@@ -62,7 +62,17 @@ exports.payOrder = async (req, res) => {
 };
 
 exports.getAllOrders = catchAsync(async (req, res, next) => {
-  const orders = await Order.find();
+  let query = Order.find();
+
+  if (req.query.sort) {
+    const sortBy = req.query.sort.split(",").join(" ");
+    console.log(sortBy);
+    query = query.sort(sortBy);
+  } else {
+    query = query.sort("-orderedDate");
+  }
+
+  const orders = await query;
   res.status(200).json({
     status: "success",
     data: {

@@ -12,7 +12,15 @@ exports.createProduct = catchAsync(async (req, res, next) => {
 });
 
 exports.getAllProducts = catchAsync(async (req, res, next) => {
-  const products = await Product.find();
+  let query = Product.find();
+
+  if (req.query.sort) {
+    const sortBy = req.query.sort.split(",").join(" ");
+
+    query.sort(sortBy);
+  }
+
+  const products = await query;
   res.status(200).json({
     status: "success",
     data: {
